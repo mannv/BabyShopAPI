@@ -22,6 +22,7 @@ $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\API\V1'], function ($api) {
         $api->get('banners', 'BannersController@index');
         $api->get('categories', 'CategoriesController@index');
+        $api->get('categories/{id}', 'CategoriesController@detail');
         $api->get('products', 'ProductsController@index');
     });
 });

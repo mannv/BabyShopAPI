@@ -35,4 +35,10 @@ class CategoriesController extends Controller
         $categories = $this->repository->all();
         return $this->response->collection($categories, CategoryTransformer::class);
     }
+
+    public function detail($id)
+    {
+        $cate = $this->repository->with('products')->find($id);
+        dd($cate->products);
+    }
 }
