@@ -20,6 +20,7 @@ class CreateBannersTable extends Migration
             $table->string('url', 255);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
+			$table->softDeletes();
         });
 	}
 

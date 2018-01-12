@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
 use App\Transformers\BannerTransformer;
 use Dingo\Api\Routing\Helpers;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Repositories\BannerRepository;

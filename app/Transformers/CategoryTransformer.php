@@ -21,12 +21,9 @@ class CategoryTransformer extends TransformerAbstract
     public function transform(Category $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'id' => $model->id,
+            'name' => $model->name,
+            'icon' => $model->icon
         ];
     }
 }
