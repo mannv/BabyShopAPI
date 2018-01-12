@@ -19,11 +19,16 @@ use Illuminate\Http\Request;
 
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
-    $api->get('banners', 'App\Http\Controllers\API\V1\BannersController@index');
-    $api->get('categories', 'App\Http\Controllers\API\V1\CategoriesController@index');
+    $api->group(['namespace' => 'App\Http\Controllers\API\V1'], function ($api) {
+        $api->get('banners', 'BannersController@index');
+        $api->get('categories', 'CategoriesController@index');
+        $api->get('products', 'ProductsController@index');
+    });
 });
 
 $api->version('v2', function ($api) {
-    $api->get('banners', 'App\Http\Controllers\API\V2\BannersController@index');
-    $api->get('categories', 'App\Http\Controllers\API\V2\CategoriesController@index');
+    $api->group(['namespace' => 'App\Http\Controllers\API\V2'], function ($api) {
+        $api->get('banners', 'BannersController@index');
+        $api->get('categories', 'CategoriesController@index');
+    });
 });
