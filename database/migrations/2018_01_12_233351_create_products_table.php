@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
 			$table->longText('description');
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('cate_id', 'fk_category_id')->references('id')->on('categories');
+			$table->foreign('cate_id', 'fk_category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

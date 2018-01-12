@@ -7,20 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
-class Category extends Model implements Transformable
+class ProductImage extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
     protected $fillable = [
-        'name',
-        'icon',
-        'status'
+        'image',
+        'product_id',
+        'thumbnail'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function products() {
-        return $this->hasMany(Product::class, 'cate_id', 'id');
-    }
 }

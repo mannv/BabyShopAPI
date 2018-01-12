@@ -4,15 +4,15 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\ProductRepository;
-use App\Entities\Product;
-use App\Validators\ProductValidator;
+use App\Repositories\ProductImageRepository;
+use App\Entities\ProductImage;
+use App\Validators\ProductImageValidator;
 
 /**
- * Class ProductRepositoryEloquent
+ * Class ProductImageRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
+class ProductImageRepositoryEloquent extends BaseRepository implements ProductImageRepository
 {
     /**
      * Specify Model class name
@@ -21,7 +21,7 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
      */
     public function model()
     {
-        return Product::class;
+        return ProductImage::class;
     }
 
     
@@ -33,6 +33,4 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-
-
 }
