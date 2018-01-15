@@ -34,5 +34,10 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function getProductsByCategoryId($cateId)
+    {
+        return $this->orderBy('id', 'DESC')->findWhere(['cate_id' => $cateId]);
+    }
+
 
 }

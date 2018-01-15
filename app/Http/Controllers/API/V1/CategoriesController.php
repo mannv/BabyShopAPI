@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\ProductRepository;
 use App\Transformers\CategoryTransformer;
+use App\Transformers\ProductTransformer;
 use Dingo\Api\Routing\Helpers;
 
 use App\Http\Requests;
@@ -38,7 +40,7 @@ class CategoriesController extends Controller
 
     public function detail($id)
     {
-        $cate = $this->repository->with('products')->find($id);
-        dd($cate->products);
+        $cate = $this->repository->find($id);
+        return $this->response->item($cate, CategoryTransformer::class);
     }
 }

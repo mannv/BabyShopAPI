@@ -23,6 +23,7 @@ $api->version('v1', function ($api) {
         $api->get('banners', 'BannersController@index');
         $api->get('categories', 'CategoriesController@index');
         $api->get('categories/{id}', 'CategoriesController@detail');
+        $api->get('categories/{id}/products', 'CategoryProductController@index');
         $api->get('products', 'ProductsController@index');
     });
 });
