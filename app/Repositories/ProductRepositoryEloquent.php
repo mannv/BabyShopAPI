@@ -36,7 +36,13 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
 
     public function getProductsByCategoryId($cateId)
     {
-        return $this->orderBy('id', 'DESC')->findWhere(['cate_id' => $cateId]);
+        $columns = [
+            'id',
+            'name',
+            'old_price',
+            'price'
+        ];
+        return $this->orderBy('id', 'DESC')->findWhere(['cate_id' => $cateId], $columns);
     }
 
 

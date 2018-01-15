@@ -20,11 +20,16 @@ class ProductTransformer extends TransformerAbstract
      */
     public function transform(Product $model)
     {
+        $percent = 0;
+        if($model->old_price > 0) {
+            $percent = 100 - round(($model->price / $model->old_price) * 100);
+        }
         return [
             'id' => $model->id,
             'name' => $model->name,
             'old_price' => $model->old_price,
-            'price' => $model->price
+            'price' => $model->price,
+            'percent' => $percent . '%',
         ];
     }
 }
