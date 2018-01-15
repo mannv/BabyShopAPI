@@ -2,11 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Criteria\CategoryCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\ProductRepository;
 use App\Entities\Product;
-use App\Validators\ProductValidator;
 
 /**
  * Class ProductRepositoryEloquent
@@ -31,10 +29,10 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
      */
     public function boot()
     {
-        $this->pushCriteria(app(RequestCriteria::class));
+        $this->pushCriteria(app(CategoryCriteria::class));
     }
 
-    public function getProductsByCategoryId($cateId)
+    public function getProductsByCategoryId()
     {
         $columns = [
             'id',
@@ -42,7 +40,7 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
             'old_price',
             'price'
         ];
-        return $this->orderBy('id', 'DESC')->findWhere(['cate_id' => $cateId], $columns);
+        return $this->with(['thumbnail'])->paginate(null, $columns);
     }
 
 

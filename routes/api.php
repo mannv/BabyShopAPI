@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
+
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\API\V1'], function ($api) {
@@ -28,9 +29,11 @@ $api->version('v1', function ($api) {
     });
 });
 
+/*
 $api->version('v2', function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\API\V2'], function ($api) {
         $api->get('banners', 'BannersController@index');
         $api->get('categories', 'CategoriesController@index');
     });
 });
+*/

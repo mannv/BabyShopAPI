@@ -20,9 +20,14 @@ class ProductTransformer extends TransformerAbstract
      */
     public function transform(Product $model)
     {
+
         $percent = 0;
         if($model->old_price > 0) {
             $percent = 100 - round(($model->price / $model->old_price) * 100);
+        }
+        $thumbnail = '';
+        if(isset($model->thumbnail)) {
+            $thumbnail = $model->thumbnail->image;
         }
         return [
             'id' => $model->id,
@@ -30,6 +35,7 @@ class ProductTransformer extends TransformerAbstract
             'old_price' => $model->old_price,
             'price' => $model->price,
             'percent' => $percent . '%',
+            'thumbnail' => $thumbnail,
         ];
     }
 }

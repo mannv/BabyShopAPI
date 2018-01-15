@@ -34,4 +34,11 @@ class Product extends Model implements Transformable
         return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 
+    /**
+     * @return $this
+     */
+    public function thumbnail() {
+        return $this->hasOne(ProductImage::class, 'product_id', 'id')->where(['thumbnail' => 1]);
+    }
+
 }

@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         Faker $faker
     ) {
         $categories = $categoryRepository->all();
-        $limit = 100;
+        $limit = 500;
         for ($i = 0; $i < $limit; $i++) {
             $cate = $categories->random();
             $oldPrice = rand(100000, 900000);
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
                 $productImageRepository->create([
                     'image' => $faker->imageUrl(400, 400),
                     'product_id' => $pro->id,
-                    'thumbnail' => rand(0, 1)
+                    'thumbnail' => $k == 0 ? 1 : 0
                 ]);
             }
         }
