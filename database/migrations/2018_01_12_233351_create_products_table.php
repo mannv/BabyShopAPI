@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
 			$table->tinyInteger('flash_sale')->default(0);
 			$table->integer('old_price')->default(0);
 			$table->integer('price')->default(0);
+			$table->integer('sold')->default(0);
 			$table->longText('description');
             $table->timestamps();
 			$table->softDeletes();

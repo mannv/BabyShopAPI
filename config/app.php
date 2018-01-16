@@ -171,7 +171,6 @@ return [
         /*
          * Application Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -179,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         \App\Providers\RepositoryServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Prettus\Repository\Providers\RepositoryServiceProvider::class
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+//        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -228,7 +228,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+//        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

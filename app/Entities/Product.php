@@ -17,7 +17,8 @@ class Product extends Model implements Transformable
         'flash_sale',
         'old_price',
         'price',
-        'description'
+        'description',
+        'sold'
     ];
 
     /**

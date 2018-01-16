@@ -11,4 +11,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 interface ProductRepository extends RepositoryInterface
 {
     public function getProductsByCategoryId();
+    public function getFlashSaleOnMainScreen();
 }

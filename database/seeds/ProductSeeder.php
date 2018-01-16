@@ -21,11 +21,13 @@ class ProductSeeder extends Seeder
         for ($i = 0; $i < $limit; $i++) {
             $cate = $categories->random();
             $oldPrice = rand(100000, 900000);
+            $productRepository->skipPresenter(true);
             $pro = $productRepository->create([
                 'name' => $faker->sentence(),
                 'cate_id' => $cate->id,
                 'flash_sale' => rand(0, 1),
                 'old_price' => $oldPrice,
+                'sold' => rand(0, 100),
                 'price' => $oldPrice * 0.7,
                 'description' => $faker->text(500)
             ]);

@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\ApiController;
 use App\Transformers\BannerTransformer;
-use Dingo\Api\Routing\Helpers;
 
 use App\Http\Requests;
 use App\Repositories\BannerRepository;
 
 
-class BannersController extends Controller
+class BannersController extends ApiController
 {
-    use Helpers;
-
     /**
      * @var BannerRepository
      */

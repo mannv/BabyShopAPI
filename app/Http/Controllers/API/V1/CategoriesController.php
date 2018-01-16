@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\ProductRepository;
+use App\Http\Controllers\API\ApiController;
 use App\Transformers\CategoryTransformer;
-use App\Transformers\ProductTransformer;
-use Dingo\Api\Routing\Helpers;
-
 use App\Http\Requests;
 use App\Repositories\CategoryRepository;
 
 
-class CategoriesController extends Controller
+class CategoriesController extends ApiController
 {
-
-    use Helpers;
     /**
      * @var CategoryRepository
      */

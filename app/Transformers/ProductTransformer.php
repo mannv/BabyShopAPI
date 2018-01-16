@@ -29,7 +29,8 @@ class ProductTransformer extends TransformerAbstract
         if(isset($model->thumbnail)) {
             $thumbnail = $model->thumbnail->image;
         }
-        return [
+
+        $row = [
             'id' => $model->id,
             'name' => $model->name,
             'old_price' => $model->old_price,
@@ -37,5 +38,9 @@ class ProductTransformer extends TransformerAbstract
             'percent' => $percent . '%',
             'thumbnail' => $thumbnail,
         ];
+        if($model->sold != null) {
+            $row['sold'] = $model->sold;
+        }
+        return $row;
     }
 }

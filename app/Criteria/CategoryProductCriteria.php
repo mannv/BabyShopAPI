@@ -10,7 +10,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Class CategoryCriteria
  * @package namespace App\Criteria;
  */
-class CategoryCriteria implements CriteriaInterface
+class CategoryProductCriteria implements CriteriaInterface
 {
     /**
      * @var Request
