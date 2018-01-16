@@ -23,4 +23,11 @@ class Category extends Model implements Transformable
     public function products() {
         return $this->hasMany(Product::class, 'cate_id', 'id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productsFeature() {
+        return $this->hasMany(Product::class, 'cate_id', 'id')->where(['feature' => 1])->orderBy('id', 'DESC')->limit(10);
+    }
 }

@@ -26,6 +26,7 @@ class ProductSeeder extends Seeder
                 'name' => $faker->sentence(),
                 'cate_id' => $cate->id,
                 'flash_sale' => rand(0, 1),
+                'feature' => rand(0, 1),
                 'old_price' => $oldPrice,
                 'sold' => rand(0, 100),
                 'price' => $oldPrice * 0.7,

@@ -12,4 +12,6 @@ interface ProductRepository extends RepositoryInterface
 {
     public function getProductsByCategoryId();
     public function getFlashSaleOnMainScreen();
+
+    public function productFeature(array $cateIds = []);
 }

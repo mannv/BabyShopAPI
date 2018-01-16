@@ -18,7 +18,8 @@ class Product extends Model implements Transformable
         'old_price',
         'price',
         'description',
-        'sold'
+        'sold',
+        'feature'
     ];
 
     /**

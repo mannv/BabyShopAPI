@@ -4,9 +4,7 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\CategoryRepository;
 use App\Entities\Category;
-use App\Validators\CategoryValidator;
 
 /**
  * Class CategoryRepositoryEloquent
@@ -24,7 +22,6 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return Category::class;
     }
 
-    
 
     /**
      * Boot up the repository, pushing criteria
@@ -33,4 +30,21 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function getCategoryFeatureIds()
+    {
+        $table = 'products';
+        $result = \DB::table($table)
+            ->where(['feature' => 1])
+            ->distinct()
+            ->pluck('cate_id');
+        return $result->toArray();
+    }
+
+//    public function getCategoriesFeature(array $ids = [])
+//    {
+////        return $this->with(['productsFeature'])
+////            ->orderBy('id', 'DESC')
+////            ->findWhereIn('id', $ids);
+//    }
 }

@@ -25,7 +25,6 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         return Product::class;
     }
 
-    
 
     /**
      * Boot up the repository, pushing criteria
@@ -47,7 +46,8 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         return $this->with(['thumbnail'])->paginate(null, $columns);
     }
 
-    public function getFlashSaleOnMainScreen() {
+    public function getFlashSaleOnMainScreen()
+    {
         $this->pushCriteria(app(FlashSaleCriteria::class));
         $columns = [
             'id',
@@ -57,5 +57,25 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
             'sold'
         ];
         return $this->with(['thumbnail'])->paginate(null, $columns);
+    }
+
+    public function productFeature(array $cateIds = [])
+    {
+        $columns = [
+            'id',
+            'name',
+            'old_price',
+            'price'
+        ];
+        $firstCate = array_shift($cateIds);
+        $first = $this->model->where(['feature' => 1, 'cate_id' => $firstCate])->orderBy('id', 'DESC')->select($columns)->limit(10);
+
+        if (!empty($cateIds)) {
+            foreach ($cateIds as $id) {
+                $union = $this->model->where(['feature' => 1, 'cate_id' => $id])->orderBy('id', 'DESC')->select($columns)->limit(10);
+                $first->union($union);
+            }
+        }
+        return $first->get();
     }
 }

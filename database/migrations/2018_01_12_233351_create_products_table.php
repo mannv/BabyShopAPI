@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
 			$table->string('name');
 			$table->integer('cate_id')->unsigned();
 			$table->tinyInteger('flash_sale')->default(0);
+			$table->tinyInteger('feature')->default(0);
 			$table->integer('old_price')->default(0);
 			$table->integer('price')->default(0);
 			$table->integer('sold')->default(0);

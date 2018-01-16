@@ -10,5 +10,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface CategoryRepository extends RepositoryInterface
 {
-    //
+    public function getCategoryFeatureIds();
+
+//    public function getCategoriesFeature(array $ids = []);
 }
