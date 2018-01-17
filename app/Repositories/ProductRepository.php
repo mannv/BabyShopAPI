@@ -13,6 +13,6 @@ interface ProductRepository extends MyRepository
     public function getProductsByCategoryId();
     public function getFlashSaleOnMainScreen();
     public function getProductIsSale();
-
     public function productFeature(array $cateIds = []);
+    public function getProductDetail($id);
 }

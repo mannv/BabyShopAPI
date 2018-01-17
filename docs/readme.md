@@ -24,3 +24,9 @@
 ```
     GET - /flashsale/detail
 ```
+
+## ProductDetailScreen
+
+```
+    GET - /products/{id}
+```

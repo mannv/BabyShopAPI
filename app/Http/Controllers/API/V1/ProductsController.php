@@ -3,31 +3,18 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\ApiController;
-use App\Transformers\ProductTransformer;
+use App\Transformers\ProductDetailTransformer;
 use App\Http\Requests;
 use App\Repositories\ProductRepository;
 
 
 class ProductsController extends ApiController
 {
-    /**
-     * @var ProductRepository
-     */
-    protected $repository;
-    public function __construct(ProductRepository $repository)
+    public function show($id, ProductRepository $repository)
     {
-        $this->repository = $repository;
+        $product = $repository->getProductDetail($id);
+        return $this->response->item($product, ProductDetailTransformer::class);
     }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $products = $this->repository->all();
-        return $this->response->collection($products, ProductTransformer::class);
-    }
 }

@@ -21,12 +21,8 @@ class ProductImageTransformer extends TransformerAbstract
     public function transform(ProductImage $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'image' => $model->image,
+            'thumbnail' => $model->thumbnail
         ];
     }
 }

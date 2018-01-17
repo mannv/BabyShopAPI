@@ -82,14 +82,22 @@ class ProductRepositoryEloquent extends MyRepositoryEloquent implements ProductR
             'cate_id'
         ];
         $firstCate = array_shift($cateIds);
-        $first = $this->model->where(['feature' => 1, 'cate_id' => $firstCate])->orderBy('id', 'DESC')->select($columns)->limit(10);
+        $first = $this->model->where(['feature' => 1, 'cate_id' => $firstCate])->orderBy('id',
+            'DESC')->select($columns)->limit(10);
 
         if (!empty($cateIds)) {
             foreach ($cateIds as $id) {
-                $union = $this->model->where(['feature' => 1, 'cate_id' => $id])->orderBy('id', 'DESC')->select($columns)->limit(10);
+                $union = $this->model->where(['feature' => 1, 'cate_id' => $id])->orderBy('id',
+                    'DESC')->select($columns)->limit(10);
                 $first->union($union);
             }
         }
         return $first->get();
+    }
+
+    public function getProductDetail($id)
+    {
+        $this->skipPresenter(true);
+        return $this->with(['category', 'images'])->find($id);
     }
 }
