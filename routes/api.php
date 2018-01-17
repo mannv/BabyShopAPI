@@ -27,7 +27,7 @@ $api->version('v1', function ($api) {
         $api->get('categories/{id}/products', 'CategoryProductController@index');
         $api->get('products', 'ProductsController@index');
         $api->get('flashsale', 'FlashSaleController@index');
-
+        $api->get('flashsale/detail', 'FlashSaleController@show');
     });
 });
 

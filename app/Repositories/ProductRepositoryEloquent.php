@@ -6,14 +6,13 @@ use App\Criteria\CategoryCriteria;
 use App\Criteria\CategoryProductCriteria;
 use App\Criteria\FlashSaleCriteria;
 use App\Presenters\ProductPresenter;
-use Prettus\Repository\Eloquent\BaseRepository;
 use App\Entities\Product;
 
 /**
  * Class ProductRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
+class ProductRepositoryEloquent extends MyRepositoryEloquent implements ProductRepository
 {
     /**
      * Specify Model class name
@@ -56,6 +55,20 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
             'price',
             'sold'
         ];
+        $limit = config('repository.pagination.limit', 10) * 2;
+        return $this->with(['thumbnail'])->paginate($limit, $columns);
+    }
+
+    public function getProductIsSale()
+    {
+        $this->pushCriteria(app(FlashSaleCriteria::class));
+        $columns = [
+            'id',
+            'name',
+            'old_price',
+            'price',
+            'sold'
+        ];
         return $this->with(['thumbnail'])->paginate(null, $columns);
     }
 
@@ -65,7 +78,8 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
             'id',
             'name',
             'old_price',
-            'price'
+            'price',
+            'cate_id'
         ];
         $firstCate = array_shift($cateIds);
         $first = $this->model->where(['feature' => 1, 'cate_id' => $firstCate])->orderBy('id', 'DESC')->select($columns)->limit(10);

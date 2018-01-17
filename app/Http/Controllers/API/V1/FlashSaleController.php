@@ -13,4 +13,11 @@ class FlashSaleController extends ApiController
         $paginateProducts = $productRepository->getFlashSaleOnMainScreen();
         return $this->response->array($paginateProducts);
     }
+
+    public function show(ProductRepository $productRepository)
+    {
+        app('log')->debug('get list flash sale detail');
+        $paginateProducts = $productRepository->getProductIsSale();
+        return $this->response->array($paginateProducts);
+    }
 }

@@ -38,6 +38,9 @@ class ProductTransformer extends TransformerAbstract
             'percent' => $percent . '%',
             'thumbnail' => $thumbnail,
         ];
+        if($model->cate_id != null) {
+            $row['cate_id'] = $model->cate_id;
+        }
         if($model->sold != null) {
             $row['sold'] = $model->sold;
         }

@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface BannerRepository
  * @package namespace App\Repositories;
  */
-interface BannerRepository extends MyRepository
+interface MyRepository extends RepositoryInterface
 {
-    //
+    public function collectionTransformer($data = null, $transformer = null);
 }

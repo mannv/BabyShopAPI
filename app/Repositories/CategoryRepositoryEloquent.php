@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
+use App\Presenters\CategoryPresenter;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Entities\Category;
 
@@ -10,7 +10,7 @@ use App\Entities\Category;
  * Class CategoryRepositoryEloquent
  * @package namespace App\Repositories;
  */
-class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepository
+class CategoryRepositoryEloquent extends MyRepositoryEloquent implements CategoryRepository
 {
     /**
      * Specify Model class name
@@ -41,10 +41,9 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
         return $result->toArray();
     }
 
-//    public function getCategoriesFeature(array $ids = [])
-//    {
-////        return $this->with(['productsFeature'])
-////            ->orderBy('id', 'DESC')
-////            ->findWhereIn('id', $ids);
-//    }
+    public function getCategoriesByListCateIds(array $cateIds = [])
+    {
+        $this->setPresenter(app(CategoryPresenter::class));
+        return $this->findWhereIn('id', $cateIds);
+    }
 }

@@ -8,7 +8,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface ProductImageRepository
  * @package namespace App\Repositories;
  */
-interface ProductImageRepository extends RepositoryInterface
+interface ProductImageRepository extends MyRepository
 {
     //
 }

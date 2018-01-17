@@ -20,7 +20,7 @@ class CreateProductImagesTable extends Migration
 			$table->tinyInteger('thumbnail');
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('product_id', 'fk_product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('product_id', 'fk_product_id')->references('id')->on('products')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
