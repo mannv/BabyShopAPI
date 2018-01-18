@@ -33,8 +33,8 @@ class ProductTransformer extends TransformerAbstract
         $row = [
             'id' => $model->id,
             'name' => $model->name,
-            'old_price' => $model->old_price,
-            'price' => $model->price,
+            'old_price' => format_currency($model->old_price),
+            'price' => format_currency($model->price),
             'percent' => $percent . '%',
             'thumbnail' => $thumbnail,
         ];

@@ -24,7 +24,10 @@ class ProductDetailTransformer extends TransformerAbstract
      */
     public function transform(Product $model)
     {
-        return $model->toArray();
+        $row = $model->toArray();
+        $row['old_price'] = format_currency($row['old_price']);
+        $row['price'] = format_currency($row['price']);
+        return $row;
     }
 
     public function includeCategory(Product $model)
