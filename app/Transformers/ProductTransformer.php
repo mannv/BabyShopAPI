@@ -36,7 +36,7 @@ class ProductTransformer extends TransformerAbstract
             'old_price' => format_currency($model->old_price),
             'price' => format_currency($model->price),
             'percent' => $percent . '%',
-            'thumbnail' => $thumbnail,
+            'thumbnail' => product_image($thumbnail),
         ];
         if($model->cate_id != null) {
             $row['cate_id'] = $model->cate_id;

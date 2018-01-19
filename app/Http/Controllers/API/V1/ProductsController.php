@@ -11,7 +11,7 @@ use App\Repositories\ProductRepository;
 class ProductsController extends ApiController
 {
     public function show($id, ProductRepository $repository)
-    {
+    {    	
         $product = $repository->getProductDetail($id);
         return $this->response->item($product, ProductDetailTransformer::class);
     }

@@ -100,4 +100,12 @@ class ProductRepositoryEloquent extends MyRepositoryEloquent implements ProductR
         $this->skipPresenter(true);
         return $this->with(['category', 'images'])->find($id);
     }
+
+    public function getListProductInIds(array $ids = [])
+    {
+        $columns = ['id', 'name', 'old_price', 'price'];
+        return $this->with(['thumbnail'])
+            ->orderBy(\DB::raw('FIELD(id, '. implode(',', $ids) .')'))
+            ->findWhereIn('id', $ids, $columns);
+    }
 }

@@ -11,6 +11,10 @@ class BannerSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Entities\Banner::class, 5)->create();
+        $images = ['1.jpg', '2.jpg', '3.png', '4.jpg', '5.jpg'];
+        factory(\App\Entities\Banner::class, 5)->make()->each(function ($item, $index) use ($images) {
+            $item->image = $images[$index];
+            $item->save();
+        });
     }
 }

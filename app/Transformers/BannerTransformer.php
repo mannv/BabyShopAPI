@@ -22,7 +22,7 @@ class BannerTransformer extends TransformerAbstract
     {
         return [
             'name' => $model->name,
-            'image' => $model->image,
+            'image' => banner_image($model->image),
             'url' => $model->url
         ];
     }

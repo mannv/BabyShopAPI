@@ -15,4 +15,5 @@ interface ProductRepository extends MyRepository
     public function getProductIsSale();
     public function productFeature(array $cateIds = []);
     public function getProductDetail($id);
+    public function getListProductInIds(array $ids = []);
 }

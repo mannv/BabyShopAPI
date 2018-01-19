@@ -21,7 +21,7 @@ class ProductImageTransformer extends TransformerAbstract
     public function transform(ProductImage $model)
     {
         return [
-            'image' => $model->image,
+            'image' => product_image($model->image),
             'thumbnail' => $model->thumbnail
         ];
     }

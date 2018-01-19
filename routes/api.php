@@ -28,6 +28,8 @@ $api->version('v1', function ($api) {
         $api->get('flashsale', 'FlashSaleController@index');
         $api->get('flashsale/detail', 'FlashSaleController@show');
         $api->get('products/{id}', 'ProductsController@show');
+        $api->get('cart', 'CartController@index');
+        $api->post('cart', 'CartController@store');
     });
 });
 
