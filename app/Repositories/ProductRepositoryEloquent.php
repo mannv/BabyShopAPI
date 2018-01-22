@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Criteria\CategoryCriteria;
 use App\Criteria\CategoryProductCriteria;
 use App\Criteria\FlashSaleCriteria;
+use App\Criteria\ProductSearchCriteria;
 use App\Presenters\ProductPresenter;
 use App\Entities\Product;
 
@@ -105,7 +106,14 @@ class ProductRepositoryEloquent extends MyRepositoryEloquent implements ProductR
     {
         $columns = ['id', 'name', 'old_price', 'price'];
         return $this->with(['thumbnail'])
-            ->orderBy(\DB::raw('FIELD(id, '. implode(',', $ids) .')'))
+            ->orderBy(\DB::raw('FIELD(id, ' . implode(',', $ids) . ')'))
             ->findWhereIn('id', $ids, $columns);
+    }
+
+    public function search()
+    {
+        $this->pushCriteria(app(ProductSearchCriteria::class));
+        $columns = ['id', 'name', 'old_price', 'price'];
+        return $this->with(['thumbnail'])->orderBy('id', 'DESC')->paginate(null, $columns);
     }
 }
