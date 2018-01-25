@@ -11,6 +11,9 @@ class Banner extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
+
+    protected $table = 'banners';
+
     protected $fillable = [
         'name',
         'image',

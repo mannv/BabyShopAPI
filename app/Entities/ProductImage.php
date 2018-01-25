@@ -11,6 +11,7 @@ class ProductImage extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
+    protected $table = 'product_images';
     protected $fillable = [
         'image',
         'product_id',

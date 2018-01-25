@@ -11,6 +11,9 @@ class Category extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
+
+    protected $table = 'categories';
+
     protected $fillable = [
         'name',
         'icon',

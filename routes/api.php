@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 //});
 
 $api = app('Dingo\Api\Routing\Router');
-$api->version('v1', function ($api) {
+$api->version('v1', ['middleware' => 'api.auth'], function ($api) {
     $api->group(['namespace' => 'App\Http\Controllers\API\V1'], function ($api) {
         $api->get('banners', 'BannersController@index');
         $api->get('categories', 'CategoriesController@index');
@@ -31,6 +31,8 @@ $api->version('v1', function ($api) {
         $api->get('products/{id}', 'ProductsController@show');
         $api->get('cart', 'CartController@index');
         $api->post('cart', 'CartController@store');
+        $api->post('users', 'UsersController@store');
+        $api->put('users/{id}', 'UsersController@update');
     });
 });
 

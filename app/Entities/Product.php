@@ -11,6 +11,7 @@ class Product extends Model implements Transformable
 {
     use TransformableTrait;
     use SoftDeletes;
+    protected $table = 'products';
     protected $fillable = [
         'name',
         'cate_id',

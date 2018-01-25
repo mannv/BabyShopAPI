@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Dingo\Api\Exception\ValidationHttpException;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class MyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +15,7 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +25,11 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return [];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw (new ValidationHttpException($validator->errors()));
     }
 }
