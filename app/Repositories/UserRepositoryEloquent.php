@@ -32,4 +32,9 @@ class UserRepositoryEloquent extends MyRepositoryEloquent implements UserReposit
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function getUserByEmail($email)
+    {
+        return $this->findWhere(['email' => $email])->first();
+    }
 }
