@@ -68,6 +68,6 @@ class CartController extends ApiController
             ]);
         }
 
-        return $this->response->array(['message' => 'submit order success']);
+        return $this->response->array(['data' => ['message' => 'submit order success']]);
     }
 }
