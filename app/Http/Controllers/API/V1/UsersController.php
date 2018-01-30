@@ -69,7 +69,7 @@ class UsersController extends ApiController
         $this->repository->update([
             'name' => $request->get('name'),
             'phone' => $request->get('phone'),
-            'locate' => $request->get('locate'),
+            'locale' => $request->get('locale'),
         ], $userId);
 
         $userInfo = $this->repository->find($userId);

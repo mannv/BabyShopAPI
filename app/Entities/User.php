@@ -28,7 +28,7 @@ class User extends Authenticatable implements Transformable
         'email',
         'password',
         'phone',
-        'locate'
+        'locale'
     ];
 
     /**

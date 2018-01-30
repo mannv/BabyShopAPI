@@ -14,7 +14,7 @@ class UserUpdateRequest extends MyRequest
         return [
             'name' => 'required',
             'phone' => 'required',
-            'locate' => 'required|in:en,vi,jp'
+            'locale' => 'required|in:en,vi,jp'
         ];
     }
 }
