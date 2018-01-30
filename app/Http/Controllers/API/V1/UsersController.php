@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use App\Entities\User;
 use App\Http\Controllers\API\ApiController;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
@@ -62,14 +63,19 @@ class UsersController extends ApiController
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request)
     {
+        $userId = $this->getUser()->id;
         $this->repository->update([
             'name' => $request->get('name'),
-            'phone' => $request->get('phone')
-        ], $id);
+            'phone' => $request->get('phone'),
+            'locate' => $request->get('locate'),
+        ], $userId);
 
-        $userInfo = $this->repository->find($id);
+        $userInfo = $this->repository->find($userId);
+        if($userInfo instanceof User) {
+            $userInfo->setAttribute('token', \JWTAuth::fromUser($userInfo));
+        }
         return  $this->response->item($userInfo, UserTransformer::class);
     }
 }

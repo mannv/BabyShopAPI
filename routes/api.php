@@ -32,7 +32,7 @@ $api->version('v1', ['middleware' => 'api.auth'], function ($api) {
         $api->get('products/{id}', 'ProductsController@show');
         $api->get('cart', 'CartController@index');
         $api->post('cart', 'CartController@store');
-        $api->put('users/{id}', 'UsersController@update');
+        $api->put('users', 'UsersController@update');
     });
 });
 

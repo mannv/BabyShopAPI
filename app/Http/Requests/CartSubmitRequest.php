@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class UserUpdateRequest extends MyRequest
+class CartSubmitRequest extends MyRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,9 +12,7 @@ class UserUpdateRequest extends MyRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'phone' => 'required',
-            'locate' => 'required|in:en,vi,jp'
+            'cart' => 'required'
         ];
     }
 }
